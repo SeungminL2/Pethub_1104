@@ -32,7 +32,8 @@ public class MyReviewApiController {
 	}
 	
 	@GetMapping("/myReviews/{reviewId}")    // {reviewId}에 숫자넣으면 됨   ==>  @PathVariable
-    public ResponseEntity<ReviewResponse> findReview(@PathVariable long reviewId) {    	
+    public ResponseEntity<ReviewResponse> findReview(@PathVariable long reviewId) {    
+		System.out.println("Api컨트롤러 - findById");
         Review review = myReviewService.findById(reviewId);
         return ResponseEntity.ok()
                 .body(new ReviewResponse(review));
