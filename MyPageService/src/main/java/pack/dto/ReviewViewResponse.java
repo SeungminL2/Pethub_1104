@@ -11,7 +11,7 @@ import pack.domain.Review;
 public class ReviewViewResponse {
 	private Long reviewId;
 	private Long petownerId;
-	private Long hospitalId;
+	private String hospitalName;
 	private Long rating;
 	private String text;
 	private String visitDate;
@@ -22,7 +22,7 @@ public class ReviewViewResponse {
 	public ReviewViewResponse(Review review) {
 	    this.reviewId = review.getReviewId();
 	    this.petownerId = review.getPetownerId();
-	    this.hospitalId = review.getHospitalId();
+	    this.hospitalName = review.getHospital().getHospitalName();
 	    this.rating = review.getRating();
 	    this.text = review.getText();
 	    this.visitDate = review.getVisitDate();

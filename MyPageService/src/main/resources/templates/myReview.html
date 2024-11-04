@@ -14,11 +14,12 @@
                 <article>
                     <input type="hidden" id="reviewId" th:value="${review.reviewId}">
                     <header class="mb-4">
-                        <h1 class="fw-bolder mb-1" th:text="${review.visitDate}"></h1>
-                        <!-- <div class="text-muted fst-italic mb-2" th:text="|Posted on ${#temporals.format{review.createdAt, 'yyyy-MM-dd HH:mm')}|"></div> -->
+                        <h3 class="fw-bolder mb-1" th:text="|병원 이름 : ${review.hospitalName} &nbsp;&nbsp;&nbsp;&nbsp; 방문 날짜 : ${review.visitDate}|"></h3>
+                        <!-- <div class="text-muted fst-italic mb-2" th:text="|작성 날짜 : ${#temporals.format{review.createdAt, 'yyyy-MM-dd HH:mm')}|"></div> -->
                     </header>
                     <section class="mb-5">
-                        <p class="fs-5 mb-4" th:text="${review.text}"></p>
+                    	<h4 class="fs-5 mb-4" th:text="|☆ ${review.rating}|"></h4>
+                        <h4 class="fs-5 mb-4" th:text="${review.text}"></h4>
                     </section>
                     <!-- 
                     <button type="button" id="modify-btn"
