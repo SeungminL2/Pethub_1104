@@ -52,13 +52,11 @@ public class Review {
     private LocalDateTime updatedAt;
     
     @Builder
-    public Review(Long rating, String text) {
-//        this.review_id = review_id;
-//        this.petowner_id = petowner_id;
-//        this.hospital_id = hospital_id;
+    public Review(Hospital hospital, String visitDate, Long rating, String text) {
+        this.hospital = hospital;
+        this.visitDate = visitDate;
         this.rating = rating;
         this.text = text;
-//        this.visit_date = visit_date;
     }
     
 //    public void update(Long rating, String text) {

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.RequiredArgsConstructor;
 import pack.domain.Review;
@@ -33,6 +34,9 @@ public class MyReviewViewController {
 	public String myInfo() {
 		return "myInfo";
 	}
+	
+	// =====================================================================
+	
 	@GetMapping("/myReviews")
 	public String myReviewList(Model model) {
 		List<ReviewListViewResponse> reviews = myReviewService.findAll()
@@ -52,9 +56,17 @@ public class MyReviewViewController {
 	}
 	
 	@GetMapping("/addReview")
-	public String addReview() {
+	public String addReview(@RequestParam(required = false) Long reviewId, Model model) {
+		if (reviewId == null) {
+			model.addAttribute("review", new ReviewViewResponse());
+		} else {
+			Review review = myReviewService.findById(reviewId);
+			model.addAttribute("review", new ReviewViewResponse(review));
+		}
 		return "addReview";
 	}
+	
+	// =====================================================================
 	
 	@GetMapping("/myHospital")
 	public String myHospital() {
